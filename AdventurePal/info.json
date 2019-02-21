@@ -1,0 +1,11 @@
+{
+  "author": ["Duncan Uszkay"],
+  "install_msg": "BogdaBots are now online.",
+  "name": "BogdaBots",
+  "disabled": false,
+  "short": "Provide a quick rundown on request.",
+  "description": "Posts a quick rundown in the current channel",
+  "tags": ["message", "announcements", "quick", "rundown"],
+  "hidden": false,
+  "min_python_version": [3, 6, 0]
+}

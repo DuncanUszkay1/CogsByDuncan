@@ -1,0 +1,46 @@
+{
+  "title": "Gondola Adventure",
+  "author": "Spurdo Sparde",
+  "states": [
+  {
+    "bookmark": "Dark Room",
+    "text": "You are in a dark room. To your left is a door, to your right is a hole. Do you go left or right?",
+    "imgsrc": "https://www.escapeall.gr/Images/ServicesPhotos/d0d9794b-573a-4a56-80e1-7015acc2ae7f/e1585535-c825-48c6-b5ea-6f181155e528.jpg",
+    "options": [
+        {
+            "text": "go left",
+            "state": 1
+        },
+        {
+            "text": "go right",
+            "state": 2
+        }
+    ]
+  },
+  {
+    "bookmark": "Sweet Victory",
+    "text": "Behind the doors lies an enourmous stash of sealed blue ray copies of madagascar. Congradulations",
+    "imgsrc": "https://images-na.ssl-images-amazon.com/images/I/91EPpEmV-qL._SX425_.jpg",
+    "options": [],
+    "ending": "good"
+  },
+  {
+    "bookmark": "Endless Shaft",
+    "text": "You are now tumbling down an endless shaft into the bowels of the earth. You may now do a flip if you wish.",
+    "imgsrc": "https://i.ytimg.com/vi/E4flwk5rp8I/hqdefault.jpg",
+    "options": [
+        {
+            "text": "do a flip",
+            "state": 3
+        }
+    ]
+  },
+  {
+    "bookmark": "Death",
+    "text": "The hole goes down for hundreds of miles. You die instantly on impact with the ground. RIP",
+    "imgsrc": "https://new-img.patrika.com/upload/2017/08/28/demo_pic_-_patrika_chhattisgarh__1756429_835x547-m.jpeg",
+    "options": [],
+    "ending": "bad"
+  }
+  ]
+}
