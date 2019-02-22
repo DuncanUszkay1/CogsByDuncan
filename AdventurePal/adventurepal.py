@@ -19,11 +19,11 @@ FAILED_TO_OPEN_FILE = "Failed to read your story file."
 INVALID_OPTION = "{} is not a valid option. Pick one of the numbers shown."
 INVALID_START_STATE = "Loaded story has invalid starting state."
 RESET_MESSAGE = """
-You may choose to return to any bookmark you have already reached.
+You may choose to return to a bookmark.
 Check the list of bookmarks you have already reached by typing:
-[p]advpal bookmarks list
+[p]advpal bookmarks
 Return to one of your choosing by typing:
-[p]advpal bookmarks reset [bookmark index]
+[p]advpal bookmarks reset [bookmark name]
 (Note: [p] is your bot command prefix)
 """
 
@@ -52,6 +52,17 @@ class AdventurePal(commands.Cog):
             return await func(self, ctx, story, ' '.join(args))
         return collapsed_args
 
+    async def on_message(self, message):
+        channel_config = self.config.channel(message.channel)
+        story_hash = await channel_config.story()
+        story = Story()
+        story.load_from_hash(story_hash)
+        story_changes = story.choose_option(message.content)
+        if story_changes:
+            await self.communicate_state(message.channel, story)
+            async with channel_config.story() as story:
+                story.update(story_changes)
+
     @commands.group()
     async def advpal(self, ctx: commands.Context):
         pass
@@ -59,7 +70,6 @@ class AdventurePal(commands.Cog):
     @advpal.command(name="load")
     @__with_story
     async def load(self, ctx, story):
-        print(ctx.clean_prefix)
         if len(ctx.message.attachments) == 0:
             await self.__error_message(ctx, NO_VALID_STORY)
             return
@@ -98,7 +108,7 @@ class AdventurePal(commands.Cog):
     @__with_story
     async def bookmarks(self, ctx, story):
         em = discord.Embed(title=BOOKMARKS_LIST_TITLE, description=story.bookmarks_string())
-        await ctx.send(embed=em)
+        await channel.send(embed=em)
 
     def build_state_embed(self, story):
         em = discord.Embed()
