@@ -86,7 +86,7 @@ class AdventurePal(commands.Cog):
             story = await self.try_load(message.channel, story_hash, channel_config)
             if story:
                 story_changes = story.choose_option(message.content)
-                self.maybe_update_story(story_changes)
+                await self.maybe_update_story(channel_config, story_changes)
                 if story_changes:
                     await self.communicate_state(message.channel, story)
 
