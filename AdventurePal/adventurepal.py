@@ -9,13 +9,26 @@ import json
 CONFIG_IDENTIFIER = "769f6635-f604-4e47-ac20-a12e981474fb"
 _ = Translator("AdventurePal", __file__)
 
+GITHUB_PAGE = "https://github.com/DuncanUszkay1/CogsByDuncan"
 COMMAND_PREFIX = "advpal"
 CHOOSE_CMD = _("choose")
 BOOKMARKS_CMD = _("bookmarks")
 RESET_CMD = _("reset")
 LOAD_CMD = _("load")
 UNLOAD_CMD = _("unload")
+HELP_CMD = _("help")
+HELP_MENU = _("""
+[p]advpal load - Attach a valid json story file to this message to load a story into the channel
+[p]advpal choose - Choose one of the options presented to you by the story. You can also just type the option into the channel without the command.
+[p]advpal bookmarks - Get a list of all the bookmarks you've reached
+[p]advpal reset - Return to one of the bookmarks specified by the bookmarks command
+[p]advpal unload - Unload the story from the given channel. Prevents normal messages from triggering the bot. Also useful if somehow your story has corrupted data.
+For more information, please visit this Cog's github page:
+{}
+""")
 ERROR = _("An error has occured.")
+INFO = _("Info")
+UNLOADING_STORY = _("Unloading the current story from this channel")
 FAILED_BOOKMARK_RESET = _("The bookmark you entered does not match any bookmark you've reached yet.")
 BOOKMARKS_LIST_TITLE = _("Bookmarks")
 BOOKMARK_FIELD = _("Bookmark")
@@ -94,6 +107,11 @@ class AdventurePal(commands.Cog):
     async def advpal(self, ctx: commands.Context):
         pass
 
+    @advpal.command(name=HELP_CMD)
+    async def help(self, ctx):
+        em = discord.Embed(title=HELP_CMD, description=HELP_MENU.format(GITHUB_PAGE))
+        await ctx.send(embed=em)
+
     @advpal.command(name=LOAD_CMD)
     @with_story(must_exist=False)
     async def load(self, ctx, story):
@@ -113,6 +131,7 @@ class AdventurePal(commands.Cog):
 
     @advpal.command(name=UNLOAD_CMD)
     async def unload(self, ctx):
+        await ctx.send(embed=discord.Embed(title=INFO, description=UNLOADING_STORY))
         async with self.config.channel(ctx.channel).story() as story:
             story.clear()
 
@@ -126,7 +145,7 @@ class AdventurePal(commands.Cog):
     @with_story()
     @collapse_args
     async def reset(self, ctx, story, bookmark):
-        return await self.try_story_operation(ctx, story, option, story.bookmark_reset, FAILED_BOOKMARK_RESET)
+        return await self.try_story_operation(ctx, story, bookmark, story.bookmark_reset, FAILED_BOOKMARK_RESET)
 
     @advpal.command(name=BOOKMARKS_CMD)
     @with_story()

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-24 22:44-0500\n"
+"POT-Creation-Date: 2019-02-26 16:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,90 +15,114 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: AdventurePal/adventurepal.py:13
+#: AdventurePal/adventurepal.py:14
 msgid "choose"
 msgstr ""
 
-#: AdventurePal/adventurepal.py:14
+#: AdventurePal/adventurepal.py:15
 msgid "bookmarks"
 msgstr ""
 
-#: AdventurePal/adventurepal.py:15
+#: AdventurePal/adventurepal.py:16
 msgid "reset"
 msgstr ""
 
-#: AdventurePal/adventurepal.py:16
+#: AdventurePal/adventurepal.py:17
 msgid "load"
 msgstr ""
 
-#: AdventurePal/adventurepal.py:17
+#: AdventurePal/adventurepal.py:18
 msgid "unload"
 msgstr ""
 
-#: AdventurePal/adventurepal.py:18
-msgid "An error has occured."
-msgstr ""
-
 #: AdventurePal/adventurepal.py:19
-msgid "The bookmark you entered does not match any bookmark you've reached yet."
+msgid "help"
 msgstr ""
 
 #: AdventurePal/adventurepal.py:20
-msgid "Bookmarks"
-msgstr ""
-
-#: AdventurePal/adventurepal.py:21
-msgid "Bookmark"
-msgstr ""
-
-#: AdventurePal/adventurepal.py:22
-msgid "Description"
-msgstr ""
-
-#: AdventurePal/adventurepal.py:23
-msgid "Options"
-msgstr ""
-
-#: AdventurePal/adventurepal.py:24
-msgid "You did not choose wisely. This was not the way it was meant to end."
-msgstr ""
-
-#: AdventurePal/adventurepal.py:25
-msgid "You have found a true ending of the story."
-msgstr ""
-
-#: AdventurePal/adventurepal.py:26
-msgid "You must pass your story as an attachment for this to work."
-msgstr ""
-
-#: AdventurePal/adventurepal.py:27
-msgid "Failed to read your story file."
-msgstr ""
-
-#: AdventurePal/adventurepal.py:28
-msgid "{} is not a valid option. Pick one of the options listed."
+msgid ""
+"\n"
+"[p]advpal load - Attach a valid json story file to this message to load a story into the channel\n"
+"[p]advpal choose - Choose one of the options presented to you by the story. You can also just type the option into the channel without the command.\n"
+"[p]advpal bookmarks - Get a list of all the bookmarks you've reached\n"
+"[p]advpal reset - Return to one of the bookmarks specified by the bookmarks command\n"
+"[p]advpal unload - Unload the story from the given channel. Prevents normal messages from triggering the bot. Also useful if somehow your story has corrupted data.\n"
+"For more information, please visit this Cog's github page:\n"
+"{}\n"
 msgstr ""
 
 #: AdventurePal/adventurepal.py:29
-msgid "Loaded story has invalid starting state."
+msgid "An error has occured."
 msgstr ""
 
 #: AdventurePal/adventurepal.py:30
-msgid "Loaded story is invalid. Check your '{}' field."
+msgid "Info"
 msgstr ""
 
 #: AdventurePal/adventurepal.py:31
+msgid "Unloading the current story from this channel"
+msgstr ""
+
+#: AdventurePal/adventurepal.py:32
+msgid "The bookmark you entered does not match any bookmark you've reached yet."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:33
+msgid "Bookmarks"
+msgstr ""
+
+#: AdventurePal/adventurepal.py:34
+msgid "Bookmark"
+msgstr ""
+
+#: AdventurePal/adventurepal.py:35
+msgid "Description"
+msgstr ""
+
+#: AdventurePal/adventurepal.py:36
+msgid "Options"
+msgstr ""
+
+#: AdventurePal/adventurepal.py:37
+msgid "You did not choose wisely. This was not the way it was meant to end."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:38
+msgid "You have found a true ending of the story."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:39
+msgid "You must pass your story as an attachment for this to work."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:40
+msgid "Failed to read your story file."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:41
+msgid "{} is not a valid option. Pick one of the options listed."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:42
+msgid "Loaded story has invalid starting state."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:43
+msgid "Loaded story is invalid. Check your '{}' field."
+msgstr ""
+
+#: AdventurePal/adventurepal.py:44
 msgid ""
 "\n"
 "Loaded story references a bookmark '{}' that is undefined. Check to make sure you defined this state in the 'states' bracket and that both are typed the same way including letter case. Additionally, ensure that none of your options\n"
 "include the word 'advpal'.\n"
 msgstr ""
 
-#: AdventurePal/adventurepal.py:35
+#: AdventurePal/adventurepal.py:48
 msgid "You cannot enter this command until this channel has a story loaded."
 msgstr ""
 
-#: AdventurePal/adventurepal.py:36
+#: AdventurePal/adventurepal.py:49
 msgid ""
 "\n"
 "You may choose to return to a bookmark.\n"

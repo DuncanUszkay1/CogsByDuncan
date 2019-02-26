@@ -39,7 +39,7 @@ class StoryStateError(Exception):
 
 class Story:
     def set_initial_state(self):
-        self.bookmarks = []
+        self.bookmarks = {}
         return self.__maybe_transfer_state(self.start)
 
     def validate(self):
@@ -65,13 +65,13 @@ class Story:
         self.author = story_hash.get("author", None)
         self.start = story_hash.get("start", None)
         self.state = story_hash.get("state", None)
-        self.bookmarks = story_hash.get("bookmarks", [])
+        self.bookmarks = story_hash.get("bookmarks", {})
         self.validate()
         return self
 
 
     def bookmarks_string(self):
-        return "\n".join(self.bookmarks)
+        return "\n".join(self.bookmarks.keys())
 
     def get_ending(self):
         return self.__get_state_data().get("ending", None)
@@ -81,8 +81,8 @@ class Story:
         return self.__maybe_transfer_state(next_state)
 
     def bookmark_reset(self, bookmark):
-        bookmark = (bookmark if bookmark in self.bookmarks else None)
-        return self.__maybe_transfer_state(bookmark)
+        next_state = self.bookmarks.get(bookmark, None)
+        return self.__maybe_transfer_state(next_state)
 
     def bookmark(self):
         return self.__get_state_data()["bookmark"]
@@ -112,7 +112,7 @@ class Story:
     def __state_hash(self):
         return {
             "state": self.state,
-            "bookmarks": list(self.bookmarks),
+            "bookmarks": self.bookmarks,
         }
 
     def __maybe_transfer_state(self, state):
@@ -122,9 +122,8 @@ class Story:
             return self.__state_hash()
         return {}
 
-    def __add_bookmark(self, bookmark):
-        if not bookmark in self.bookmarks:
-            self.bookmarks.append(bookmark)
+    def __add_bookmark(self, state):
+        self.bookmarks[self.states[state]["bookmark"]] = state
 
     def __get_state_data(self):
         return self.states[self.state]
